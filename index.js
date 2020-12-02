@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const middlewares = require('./middlewares');
 const morgan = require('morgan')
@@ -15,6 +17,6 @@ app.use('/api', api);
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
 
-app.listen(5000, () => {
-    console.log('Estamos corriendo en el puerto 5000');
+app.listen(process.env.PORT, () => {
+    console.log('Estamos corriendo en el puerto ' + process.env.PORT);
 });
