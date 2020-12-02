@@ -4,7 +4,7 @@
   "description": "Curso de webtoriales para API hecho en Nodejs con MongoDB",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
