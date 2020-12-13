@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 
 const options = {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useCreateIndex: true
 };
 
 mongoose.connect(process.env.DB_LINK, options, err => {

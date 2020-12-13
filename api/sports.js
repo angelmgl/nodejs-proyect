@@ -1,20 +1,17 @@
 const express = require('express');
 const router = express.Router();
 
-const Sport = require('../models/sports')
+const Sport = require('../models/sport')
 
 router.get('/', (req, res) => {
     res.send('obteniendo recurso de deportes...');
 });
 
 router.post('/', async (req, res, next) => {
-    const sport = new Sport({
-       name: req.body.name,
-       playersPerTeam: req.body.playersPerTeam     
-    });
+    const sport = new Sport(req.body);
     try {
-        const saved = await sport.save();
-        res.status(201).json(saved);
+        const savedSport = await sport.save();
+        res.status(201).json(savedSport);
     } catch(error) {
         res.status(400);
         next(error);
