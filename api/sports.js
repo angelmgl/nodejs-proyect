@@ -36,15 +36,22 @@ router.post('/', async (req, res, next) => {
     }
 });
 
-router.put('/', (req, res) => {
-    res.send('editando recurso de deportes...');
+router.put('/:id', async (req, res, next) => {
+    const { id } = req.params;
+    try {
+        const modifiedSport = await Sport.findByIdAndUpdate(id, req.body);
+        res.status(200).json(modifiedSport);
+    } catch (error) {
+        res.status(400);
+        next(error);
+    }
 });
 
 router.delete('/:id', async (req, res, next) => {
-    const id = req.params.id;
+    const { id } = req.params;
     try {
-        const sportDeleted = await Sport.findByIdAndDelete(id);
-        res.status(200).json(sportDeleted)
+        const deletedSport = await Sport.findByIdAndDelete(id);
+        res.status(200).json(deletedSport)
     } catch(error) {
         res.status(400);
         next(error);

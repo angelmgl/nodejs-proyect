@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const options = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useCreateIndex: true
+    useCreateIndex: true,
+    useFindAndModify: false
 };
 
 mongoose.connect(process.env.DB_LINK, options, err => {
